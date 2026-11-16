@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FASO GPT - Intelligence Artificielle</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#080e24;
+color:white;
+}
+header{
+padding:18px;
+background:#101735;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #6540c8;
+}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#00e58c}
+button{
+border:0;
+border-radius:12px;
+padding:13px 18px;
+color:white;
+cursor:pointer;
+background:linear-gradient(100deg,#00bfff,#a72cff);
+}
+.hero{
+text-align:center;
+padding:45px 18px;
+background:radial-gradient(circle at top,#47206b,#080e24 70%);
+}
+h1{
+font-size:48px;
+margin:12px 0;
+}
+.gradient{
+background:linear-gradient(90deg,#00e58c,#ffda25,#ae40ff);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+.hero p{line-height:1.6;color:#dce2ff}
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+padding:15px;
+}
+.card{
+padding:20px 12px;
+border-radius:15px;
+text-align:center;
+background:linear-gradient(145deg,#142d59,#301449);
+border:1px solid #5143a0;
+}
+.card b{display:block;margin:10px 0}
+.chat{
+margin:20px 12px;
+padding:18px;
+border-radius:20px;
+background:#111a39;
+border:1px solid #5066ad;
+min-height:300px;
+}
+.chat h2{text-align:center}
+.messages{
+height:180px;
+overflow-y:auto;
+padding:10px;
+}
+.message{
+padding:12px;
+margin:8px 0;
+border-radius:12px;
+background:#25345c;
+line-height:1.5;
+white-space:pre-wrap;
+}
+.user{background:#42338a}
+.input{
+display:flex;
+gap:8px;
+}
+input{
+flex:1;
+min-width:0;
+padding:14px;
+border-radius:12px;
+border:1px solid #6675bb;
+background:#202b50;
+color:white;
+}
+footer{
+text-align:center;
+padding:25px;
+color:#aab5d9;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">🇧🇫 FASO <span>GPT</span></div>
+<button onclick="showInfo()">☰ Menu</button>
+</header>
+
+<section class="hero">
+<h1>FASO <span class="gradient">GPT</span></h1>
+<h2>🤖 Votre assistant intelligent</h2>
+<p>
+Votre plateforme d'intelligence artificielle
+au Burkina Faso et partout en Afrique.
+</p>
+<button onclick="startChat()">
+🚀 Essayer gratuitement
+</button>
+</section>
+
+<section class="cards">
+<div class="card">
+<h2>💬</h2>
+<b>Chat IA</b>
+Discutez et posez vos questions
+</div>
+<div class="card">
+<h2>🎨</h2>
+<b>Images IA</b>
+Création d'images (à venir)
+</div>
+<div class="card">
+<h2>🎬</h2>
+<b>Vidéos IA</b>
+Création de vidéos (à venir)
+</div>
+<div class="card">
+<h2>💻</h2>
+<b>Code IA</b>
+Assistance programmation (à venir)
+</div>
+</section>
+
+<section class="chat" id="chat">
+<h2>Bonjour ! 👋</h2>
+<p style="text-align:center">
+Comment puis-je vous aider aujourd'hui ?
+</p>
+
+<div class="messages" id="messages">
+<div class="message">
+🤖 Bienvenue sur FASO GPT !
+Cette version est une démonstration.
+La véritable IA sera ajoutée prochainement.
+</div>
+</div>
+
+<div class="input">
+<input id="question"
+placeholder="Écrivez votre message..."
+onkeydown="if(event.key==='Enter')send()">
+<button onclick="send()">➤</button>
+</div>
+</section>
+
+<footer>
+🇧🇫 FASO GPT © 2026<br>
+Créé au Burkina Faso pour l'Afrique 🌍
+</footer>
+
+<script>
+function startChat(){
+document.getElementById("chat")
+.scrollIntoView({behavior:"smooth"});
+document.getElementById("question").focus();
+}
+
+function showInfo(){
+alert("FASO GPT - Version de démonstration gratuite.");
+}
+
+function send(){
+const input=document.getElementById("question");
+const text=input.value.trim();
+if(!text)return;
+
+const box=document.getElementById("messages");
+
+const user=document.createElement("div");
+user.className="message user";
+user.textContent="👤 "+text;
+box.appendChild(user);
+
+input.value="";
+
+const bot=document.createElement("div");
+bot.className="message";
+bot.textContent="🤖 Merci pour votre message ! La connexion à l'intelligence artificielle n'est pas encore activée.";
+box.appendChild(bot);
+
+box.scrollTop=box.scrollHeight;
+}
+</script>
+
+</body>
+</html>
